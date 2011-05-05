@@ -7,6 +7,14 @@
 				so that others do not have to reinvent the wheel
 				This application will be useful for who write 
 				windows batch script especially.
+
+	Usage	:	DelayTimer.exe 5		// to make delay of 5s
+				DelayTimer.exe 1:25		// to make delay of 1 minute and 25s
+				DelayTimer.exe 1:30:25	// to make delay of 1 hour and 30 minutes and 25s
+				DelayTimer.exe 70		// to make delay of 70s
+
+	Image ack:	The image used in sourceforge for this project is
+				taken from devian art it persists till we make one
 */
 
 #include <stdio.h>
