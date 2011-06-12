@@ -23,10 +23,13 @@
 
 int main (int argc, char *argv[]) {
 	char *token;
+	char formatstr[100];
 	char *sep = ":";
 	bool nonzerof = true;
 
-	int delay, i, res;
+	int delay, i, res, formatlen=0;
+	int prelen=0;
+
 	if (argc<2) {
 		printf("Argument delay time missing.\n");
 		return 0;
@@ -70,22 +73,47 @@ int main (int argc, char *argv[]) {
 
 	for (i=0; i<delay; i++) {
 		res = (delay - i) / 3600;
-		printf("\rTime to wait:");
+		//printf("\rTime to wait:");
+		putchar('\r');
+		sprintf(formatstr, "Time to wait:");
+		formatlen = strlen(formatstr);
+
 		if (res) {
-			printf(" %dh", res);
+			sprintf(&formatstr[formatlen], " %dh", res);
+			formatlen = strlen(formatstr);
+			// printf(" %dh", res);
 			nonzerof = false;
 		}
 		res = (delay-i)%3600;
 		res /= 60;
 		if (res) {
-			printf(" %dm", res);
+			// printf(" %dm", res);
+			sprintf(&formatstr[formatlen], " %dm", res);
+			formatlen = strlen(formatstr);
 			nonzerof = false;
 		}
 		res = (delay-i)%3600;
 		res %= 60;
-		if (res || nonzerof)
-			printf(" %ds", res);
-		printf("    ");
+		if (res || nonzerof) {
+			sprintf(&formatstr[formatlen], " %ds", res);
+			formatlen = strlen(formatstr);
+			// printf(" %ds", res);
+		}
+		if (prelen && prelen > formatlen) {
+			int j;
+		    for (j = formatlen; j<prelen; j++)
+		        //printf(" ");
+				formatstr[j] = ' ';
+			formatstr[j] = '\0';
+		}
+		printf(formatstr);
+		/*if (prelen && prelen > formatlen) {
+		    int diff = prelen - formatlen;
+		    for (int j=0; j<diff; j++)
+		        printf(" ");
+		}*/
+		prelen = formatlen;
+		//printf("    ");
 
 		Sleep(1000);
 	}

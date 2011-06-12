@@ -91,13 +91,20 @@ int main (int argc, char *argv[]) {
 			sprintf(&formatstr[formatlen], " %ds", res);
 			formatlen = strlen(formatstr);
 		}
+		if (prelen && prelen > formatlen) {
+			int j;
+		    for (j = formatlen; j<prelen; j++)
+		        //printf(" ");
+				formatstr[j] = ' ';
+			formatstr[j] = '\0';
+		}
 		printf(formatstr);
 //	    printf("prelen %d, curlen: %d", prelen, formatlen);
-		if (prelen && prelen != formatlen) {
-		    int diff = abs(formatlen - prelen);
+		/*if (prelen && prelen > formatlen) {
+		    int diff = prelen - formatlen;
 		    for (int j=0; j<diff; j++)
 		        printf(" ");
-		}
+		}*/
         fflush(stdout);
 		sleep(1);
 		prelen = formatlen;
