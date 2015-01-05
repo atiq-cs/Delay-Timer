@@ -13,8 +13,7 @@
 				DelayTimer.exe 1:30:25	// to make delay of 1 hour and 30 minutes and 25s
 				DelayTimer.exe 70		// to make delay of 70s
 
-	Image ack:	The image used in sourceforge for this project is
-				taken from devian art it persists till we make one
+	Image ack:	The image used in sourceforge devian art
 */
 
 #include <stdio.h>
