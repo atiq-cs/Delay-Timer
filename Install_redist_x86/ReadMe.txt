@@ -1,1 +1,0 @@
-Delay Timer 1.0.0.0----------------------Author: Saint AtiqueInstructions--------------Please put the dll file on the same directory where you keep delay.exeOtherwise you can install visual c++ redistributable from microsoft.
